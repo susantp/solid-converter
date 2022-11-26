@@ -5,5 +5,5 @@ namespace Techbizz\UnitConverterModule;
 interface UnitConverterInterface
 {
 
-    public function convert(int $value);
+    public function convert(float|int $value);
 }

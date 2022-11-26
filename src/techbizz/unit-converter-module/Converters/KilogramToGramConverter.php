@@ -7,7 +7,7 @@ use Techbizz\UnitConverterModule\UnitConverterInterface;
 class KilogramToGramConverter implements UnitConverterInterface
 {
 
-    public function convert(int $value): float
+    public function convert(float|int $value): float|int
     {
         return $value * 1000;
     }

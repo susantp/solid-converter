@@ -1,16 +1,19 @@
 <?php
 require_once "vendor/autoload.php";
 
-use Techbizz\UnitConverterModule\UnitConverter;
+use Techbizz\UnitConverterModule\UnitConverterManager;
 use Techbizz\UnitConverterModule\UnitConverterFactory;
+use Techbizz\UnitConverterModule\UnitEnum;
 
 $fromUnit = 'Gram';
 $toUnit = 'KiloGram';
-$value = '2000';
+$value = 2500;
 
-$converter = new UnitConverter(new UnitConverterFactory());
-$convertedValue = $converter->convert($fromUnit, $toUnit, $value);
+$converterManager = new UnitConverterManager(new UnitConverterFactory());
+$convertedValue = $converterManager->convert(UnitEnum::KG_UNIT, UnitEnum::G_UNIT, $value);
+
 $fromUnit = $convertedValue > 1 ? sprintf('%ss', $fromUnit) : $fromUnit;
 $toUnit = $convertedValue > 1 ? sprintf('%ss', $toUnit) : $toUnit;
-echo sprintf('%s%s is %s%s'.PHP_EOL, $value, $fromUnit, $convertedValue, $toUnit);
+
+echo sprintf('%f %s is %f %s'.PHP_EOL, $value, $fromUnit, $convertedValue, $toUnit);
 //echo "$value $fromUnit is  $value $toUnit".PHP_EOL;
