@@ -2,23 +2,22 @@
 
 namespace Techbizz\UnitConverterModule;
 
-use Techbizz\UnitConverterModule\Converters\GramToKiloGramConverter;
-use Techbizz\UnitConverterModule\Converters\KilogramToGramConverter;
-
 class UnitConverterFactory
 {
-    public function makeConverter(
-        UnitEnum $fromUnit,
-        UnitEnum $toUnit,
-    ): UnitConverterInterface|string {
-//        $class = ${$fromUnit}.'To'.${$toUnit};
-//        return new $class();
-        if ($fromUnit->value == UnitEnum::KG_UNIT->value && $toUnit->value == UnitEnum::G_UNIT->value) {
-            return new KilogramToGramConverter();
+    /**
+     * @throws \Exception
+     */
+    public function makeConverter(UnitEnum $fromUnit, UnitEnum $toUnit,): UnitConverterInterface|string
+    {
+        $converterClass = sprintf(
+            "Techbizz\UnitConverterModule\Converters\%sTo%sConverter",
+            $fromUnit->value,
+            $toUnit->value);
+
+        if (!class_exists($converterClass)) {
+            throw new \Exception("Converter not available.");
         }
-        if ($fromUnit->value == UnitEnum::G_UNIT->value && $toUnit->value == UnitEnum::KG_UNIT->value) {
-            return new GramToKiloGramConverter();
-        }
-        return sprintf('%s', 'No Converter Available.');
+
+        return new $converterClass();
     }
 }
