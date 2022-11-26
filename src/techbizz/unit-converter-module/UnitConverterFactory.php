@@ -7,8 +7,10 @@ use Techbizz\UnitConverterModule\Converters\KilogramToGramConverter;
 
 class UnitConverterFactory
 {
-    public function makeConverter(UnitEnum $fromUnit, UnitEnum $toUnit): UnitConverterInterface|string
-    {
+    public function makeConverter(
+        UnitEnum $fromUnit,
+        UnitEnum $toUnit,
+    ): UnitConverterInterface|string {
 //        $class = ${$fromUnit}.'To'.${$toUnit};
 //        return new $class();
         if ($fromUnit->value == UnitEnum::KG_UNIT->value && $toUnit->value == UnitEnum::G_UNIT->value) {

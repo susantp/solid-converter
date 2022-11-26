@@ -5,15 +5,15 @@ use Techbizz\UnitConverterModule\UnitConverterManager;
 use Techbizz\UnitConverterModule\UnitConverterFactory;
 use Techbizz\UnitConverterModule\UnitEnum;
 
-$fromUnit = 'Gram';
-$toUnit = 'KiloGram';
+$fromUnit = UnitEnum::G_UNIT;
+$toUnit = UnitEnum::KG_UNIT;
 $value = 2500;
 
 $converterManager = new UnitConverterManager(new UnitConverterFactory());
-$convertedValue = $converterManager->convert(UnitEnum::KG_UNIT, UnitEnum::G_UNIT, $value);
+$convertedValue = $converterManager->convert($fromUnit, $toUnit, $value);
 
-$fromUnit = $convertedValue > 1 ? sprintf('%ss', $fromUnit) : $fromUnit;
-$toUnit = $convertedValue > 1 ? sprintf('%ss', $toUnit) : $toUnit;
+$fromUnit = $convertedValue > 1 ? sprintf('%ss', $fromUnit->value) : $fromUnit;
+$toUnit = $convertedValue > 1 ? sprintf('%ss', $toUnit->value) : $toUnit;
 
-echo sprintf('%f %s is %f %s'.PHP_EOL, $value, $fromUnit, $convertedValue, $toUnit);
+echo sprintf('%.3f %s is %.3f %s'.PHP_EOL, $value, $fromUnit, $convertedValue, $toUnit);
 //echo "$value $fromUnit is  $value $toUnit".PHP_EOL;
