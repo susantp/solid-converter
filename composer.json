@@ -1,0 +1,19 @@
+{
+    "name": "techbizz/unit-converter",
+    "description": "unit converter application",
+    "autoload": {
+        "psr-4": {
+            "Techbizz\\UnitConverterModule\\": "src/techbizz/unit-converter-module/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Susant Paudel",
+            "email": "techbizznepal@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-http": "*"
+    }
+}

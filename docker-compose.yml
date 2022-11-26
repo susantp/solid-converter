@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  converter:
+    container_name: "converter_php"
+    image: "techbizz/converter:1.0"
+    build: .
+    restart: unless-stopped
+    environment:
+      PHP_MEMORY_LIMIT: "2G"
+      COMPOSER_MEMORY_LIMIT: '-1'
+    volumes:
+      - .:/var/www/
+    ports:
+      - '9000:9000'
