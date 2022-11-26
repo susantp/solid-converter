@@ -18,7 +18,7 @@ class UnitConverterFactory
             $toUnit->value);
 
         if (!class_exists($converterClass)) {
-            throw new Exception("Converter not available.");
+            throw new Exception("$fromUnit->value to $toUnit->value converter not available.", 400);
         }
 
         return new $converterClass();
