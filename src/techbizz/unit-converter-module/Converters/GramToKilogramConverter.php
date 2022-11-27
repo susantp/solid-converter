@@ -4,7 +4,7 @@ namespace Techbizz\UnitConverterModule\Converters;
 
 use Techbizz\UnitConverterModule\UnitConverterInterface;
 
-class GramToKiloGramConverter implements UnitConverterInterface
+class GramToKilogramConverter implements UnitConverterInterface
 {
 
     public function convert(float|int $value): float|int
