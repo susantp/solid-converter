@@ -2,7 +2,7 @@
 
 namespace Techbizz\UnitConverterModule\Converters;
 
-class RopaniToAanaConverter implements \Techbizz\UnitConverterModule\UnitConverterInterface
+class RopaniToAanaConverter implements \Techbizz\UnitConverterModule\Interfaces\UnitConverterInterface
 {
 
     public function convert(float|int $value): float|int

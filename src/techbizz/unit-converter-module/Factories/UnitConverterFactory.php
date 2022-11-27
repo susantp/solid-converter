@@ -1,8 +1,10 @@
 <?php
 
-namespace Techbizz\UnitConverterModule;
+namespace Techbizz\UnitConverterModule\Factories;
 
 use Exception;
+use Techbizz\UnitConverterModule\Interfaces\UnitConverterInterface;
+use Techbizz\UnitConverterModule\Enums\UnitEnum;
 
 class UnitConverterFactory
 {

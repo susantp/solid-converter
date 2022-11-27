@@ -1,6 +1,6 @@
 <?php
 
-namespace Techbizz\UnitConverterModule;
+namespace Techbizz\UnitConverterModule\Enums;
 
 enum UnitEnum: string
 {

@@ -2,7 +2,7 @@
 
 namespace Techbizz\UnitConverterModule\Converters;
 
-use Techbizz\UnitConverterModule\UnitConverterInterface;
+use Techbizz\UnitConverterModule\Interfaces\UnitConverterInterface;
 
 class GramToKilogramConverter implements UnitConverterInterface
 {

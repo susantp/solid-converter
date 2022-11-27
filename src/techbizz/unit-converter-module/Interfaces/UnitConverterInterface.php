@@ -1,6 +1,6 @@
 <?php
 
-namespace Techbizz\UnitConverterModule;
+namespace Techbizz\UnitConverterModule\Interfaces;
 
 interface UnitConverterInterface
 {

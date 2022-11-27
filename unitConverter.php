@@ -1,9 +1,9 @@
 <?php
 require_once "vendor/autoload.php";
 
-use Techbizz\UnitConverterModule\UnitConverterManager;
-use Techbizz\UnitConverterModule\UnitConverterFactory;
-use Techbizz\UnitConverterModule\UnitEnum;
+use Techbizz\UnitConverterModule\Factories\UnitConverterFactory;
+use Techbizz\UnitConverterModule\Managers\UnitConverterManager;
+use Techbizz\UnitConverterModule\Enums\UnitEnum;
 
 if (!$argc) {
     echo "sorry";
