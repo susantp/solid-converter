@@ -6,6 +6,7 @@
   ],
   "autoload": {
     "psr-4": {
+      "Techbizz\\": "src",
       "Techbizz\\UnitConverterModule\\": "src/techbizz/unit-converter-module/"
     }
   },
