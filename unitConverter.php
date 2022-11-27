@@ -9,6 +9,14 @@ if (!$argc) {
     echo "sorry";
     return 0;
 };
+// set global variables
+$moduleVariables = [
+    'baseNamespace' => '\\Techbizz\\UnitConvertModule\\'
+];
+
+$GLOBALS['moduleVariables'] = $moduleVariables;
+// setting global variable end
+
 $argumentArray = getopt('f:t:v:', ['fromUnit:toUnit:value:']);
 
 $fromUnit = UnitEnum::from(trim($argumentArray['f']));
