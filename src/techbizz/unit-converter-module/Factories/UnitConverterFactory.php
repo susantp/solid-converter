@@ -24,17 +24,20 @@ class UnitConverterFactory
      */
     public function makeConverter(UnitEnum $fromUnit, UnitEnum $toUnit,): UnitConverterInterface|Exception
     {
-        $converterClass = sprintf("%sTo%sConverter", ucfirst($fromUnit->value), ucfirst($toUnit->value));
+        $converterClassConvention = sprintf("%sTo%sConverter", ucfirst($fromUnit->value), ucfirst($toUnit->value));
 
-        $requestedClass = array_filter($this->converterMap, function ($e) use ($converterClass) {
-            return $converterClass === $e[0];
-        });
+        $requestedClassContainer = array_filter(
+            $this->converterMap,
+            function ($requestedClassArray) use ($converterClassConvention) {
+                return $converterClassConvention === $requestedClassArray[0];
+            }
+        );
 
-        if (!count($requestedClass)) {
+        if (!count($requestedClassContainer)) {
             throw new Exception("$fromUnit->value to $toUnit->value converter not available.".PHP_EOL);
         }
 
-        $converterClass = array_shift($requestedClass);
+        $converterClass = array_shift($requestedClassContainer);
 
         return new $converterClass[1]();
     }
