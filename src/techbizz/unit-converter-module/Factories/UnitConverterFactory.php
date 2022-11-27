@@ -9,14 +9,23 @@ use Techbizz\UnitConverterModule\Enums\UnitEnum;
 class UnitConverterFactory
 {
 
-    public function __construct(
-        private readonly array $converterMap = [
-            ['AanaToRopaniConverter', '\\Techbizz\\UnitConverterModule\\Converters\\AanaToRopaniConverter'],
-            ['GramToKilogramConverter', '\\Techbizz\\UnitConverterModule\\Converters\\GramToKilogramConverter'],
-            ['KilogramToGramConverter', '\\Techbizz\\UnitConverterModule\\Converters\\KilogramToGramConverter'],
-            ['RopaniToAanaConverter', '\\Techbizz\\UnitConverterModule\\Converters\\RopaniToAanaConverter']
-        ]
-    ) {
+    public function __construct(private array $converterMap = [])
+    {
+        $this->mapConverters();
+    }
+
+    private function mapConverters(): void
+    {
+        $converterNameSpace = $_ENV['CONVERTER_NAMESPACE'];
+        $converterFilesLs = scandir('./src/techbizz/unit-converter-module/Converters');
+        $converterFiles = array_slice($converterFilesLs, 2);
+        $this->converterMap = array_map(
+            function ($filename) use ($converterNameSpace) {
+                $class = explode('.', $filename);
+                return [$class[0], sprintf('%s\\%s', $converterNameSpace, $class[0])];
+            },
+            $converterFiles
+        );
     }
 
     /**

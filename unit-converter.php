@@ -1,23 +1,18 @@
 <?php
 require_once "vendor/autoload.php";
 
+use Symfony\Component\Dotenv\Dotenv;
 use Techbizz\UnitConverterModule\Factories\UnitConverterFactory;
 use Techbizz\UnitConverterModule\Managers\UnitConverterManager;
 use Techbizz\UnitConverterModule\Enums\UnitEnum;
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/.env');
 
 if (!$argc) {
     echo "sorry";
     return 0;
 };
-// set global variables
-$GLOBALS['moduleVariables'] = null;
-
-$moduleVariablesArray = [
-    'baseNamespace' => '\\Techbizz\\UnitConverterModule'
-];
-
-$GLOBALS['moduleVariables'] = $moduleVariablesArray;
-// setting global variable end
 
 $argumentArray = getopt('f:t:v:', ['fromUnit:toUnit:value:']);
 
