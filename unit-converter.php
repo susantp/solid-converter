@@ -1,13 +1,12 @@
 <?php
 require_once "vendor/autoload.php";
 
-use Symfony\Component\Dotenv\Dotenv;
 use Techbizz\UnitConverterModule\Factories\UnitConverterFactory;
 use Techbizz\UnitConverterModule\Managers\UnitConverterManager;
 use Techbizz\UnitConverterModule\Enums\UnitEnum;
 
-$dotenv = new Dotenv();
-$dotenv->load(__DIR__.'/.env');
+const BASE_NAMESPACE = 'Techbizz\UnitConverterModule';
+const CONVERTER_NAMESPACE = 'Techbizz\UnitConverterModule\Converters';
 
 if (!$argc) {
     echo "sorry";

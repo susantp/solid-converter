@@ -16,7 +16,7 @@ class UnitConverterFactory
 
     private function mapConverters(): void
     {
-        $converterNameSpace = $_ENV['CONVERTER_NAMESPACE'];
+        $converterNameSpace = CONVERTER_NAMESPACE;
         $converterFilesLs = scandir('./src/techbizz/unit-converter-module/Converters');
         $converterFiles = array_slice($converterFilesLs, 2);
         $this->converterMap = array_map(
