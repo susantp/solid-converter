@@ -4,9 +4,9 @@ namespace Techbizz\UnitConverterModule\Enums;
 
 enum UnitEnum: string
 {
-    case KG_UNIT = "Kilogram";
-    case G_UNIT = "Gram";
-    case AANA_UNIT = "Aana";
-    case ROPANI_UNIT = "Ropani";
+    case KG_UNIT = "kilogram";
+    case G_UNIT = "gram";
+    case AANA_UNIT = "aana";
+    case ROPANI_UNIT = "ropani";
 
 }
