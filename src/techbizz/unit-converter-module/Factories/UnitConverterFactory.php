@@ -15,7 +15,7 @@ class UnitConverterFactory
     public function makeConverter(UnitEnum $fromUnit, UnitEnum $toUnit,): UnitConverterInterface|Exception
     {
         $converterClass = sprintf(
-            "%s\Converters\%sTo%sConverter",
+            "%s\\Converters\\%sTo%sConverter",
             $GLOBALS['moduleVariables']['baseNamespace'],
             $fromUnit->value,
             $toUnit->value);

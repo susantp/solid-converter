@@ -10,11 +10,13 @@ if (!$argc) {
     return 0;
 };
 // set global variables
-$moduleVariables = [
-    'baseNamespace' => '\\Techbizz\\UnitConvertModule\\'
+$GLOBALS['moduleVariables'] = null;
+
+$moduleVariablesArray = [
+    'baseNamespace' => '\\Techbizz\\UnitConverterModule'
 ];
 
-$GLOBALS['moduleVariables'] = $moduleVariables;
+$GLOBALS['moduleVariables'] = $moduleVariablesArray;
 // setting global variable end
 
 $argumentArray = getopt('f:t:v:', ['fromUnit:toUnit:value:']);
