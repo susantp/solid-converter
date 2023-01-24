@@ -23,9 +23,11 @@ class MainController
     /**
      * @throws Exception
      */
-    public function validate($argumentArray = []): MainController
+    public function validate(array $argumentArray = []): MainController
     {
-        if (count($argumentArray) != self::ARGUMENT_COUNT) throw new Exception(self::INVALID_ARGS_MSG . PHP_EOL);
+        if (count($argumentArray) != self::ARGUMENT_COUNT) {
+            throw new Exception(self::INVALID_ARGS_MSG . PHP_EOL);
+        }
 
         $matchingFromUnitIndex = array_search($argumentArray['f'], array_column(UnitEnum::cases(), 'value'));
         $matchingToUnitIndex = array_search($argumentArray['t'], array_column(UnitEnum::cases(), 'value'));
@@ -48,7 +50,7 @@ class MainController
         $converter = $this->getUnitConverter($this->fromUnit, $this->toUnit);
         $convertedValue = $converter->convert($this->value);
 
-        $fromUnitString = $this->fromUnit->value > 1 ? sprintf('%ss', $this->fromUnit->value) : $this->fromUnit->value;
+        $fromUnitString = $this->value > 1 ? sprintf('%ss', $this->fromUnit->value) : $this->fromUnit->value;
         $toUnitString = $convertedValue > 1 ? sprintf('%ss', $this->toUnit->value) : $this->toUnit->value;
 
         return sprintf(self::SUCCESS_MSG, $this->value, $fromUnitString, $convertedValue, $toUnitString) . PHP_EOL;
@@ -70,5 +72,4 @@ class MainController
         $converterManager = new UnitConverterManager();
         return $converterManager->getConverter($this->fromUnit, $this->toUnit);
     }
-
 }

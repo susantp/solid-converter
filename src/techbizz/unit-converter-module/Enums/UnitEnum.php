@@ -8,5 +8,4 @@ enum UnitEnum: string
     case G_UNIT = "gram";
     case AANA_UNIT = "aana";
     case ROPANI_UNIT = "ropani";
-
 }

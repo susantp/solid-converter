@@ -16,5 +16,4 @@ class UnitConverterManager
     {
         return (new UnitConverterFactory())->makeConverter($fromUnit, $toUnit);
     }
-
 }
