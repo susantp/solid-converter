@@ -8,6 +8,8 @@ use Techbizz\UnitConverterModule\Enums\UnitEnum;
 
 class UnitConverterFactory
 {
+    private const CONVERTER_NAMESPACE = 'Techbizz\UnitConverterModule\Converters';
+    private const CONVERTERS_DIRECTORY = './src/techbizz/unit-converter-module/Converters';
 
     public function __construct(private array $converterMap = [])
     {
@@ -16,11 +18,11 @@ class UnitConverterFactory
 
     private function mapConverters(): void
     {
-        $converterNameSpace = CONVERTER_NAMESPACE;
-        $converterFilesLs = scandir('./src/techbizz/unit-converter-module/Converters');
+        $converterFilesLs = scandir(self::CONVERTERS_DIRECTORY);
         $converterFiles = array_slice($converterFilesLs, 2);
         $this->converterMap = array_map(
-            function ($filename) use ($converterNameSpace) {
+            function ($filename) {
+                $converterNameSpace = self::CONVERTER_NAMESPACE;
                 $class = explode('.', $filename);
                 return [$class[0], sprintf('%s\\%s', $converterNameSpace, $class[0])];
             },

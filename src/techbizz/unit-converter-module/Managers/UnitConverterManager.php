@@ -5,22 +5,16 @@ namespace Techbizz\UnitConverterModule\Managers;
 use Exception;
 use Techbizz\UnitConverterModule\Factories\UnitConverterFactory;
 use Techbizz\UnitConverterModule\Enums\UnitEnum;
+use Techbizz\UnitConverterModule\Interfaces\UnitConverterInterface;
 
 class UnitConverterManager
 {
-    public function __construct(protected UnitConverterFactory $converterFactory)
-    {
-    }
-
     /**
      * @throws Exception
      */
-    public function convert(UnitEnum $fromUnit, UnitEnum $toUnit, float|int $value): int|float
+    public function getConverter(UnitEnum $fromUnit, UnitEnum $toUnit): Exception|UnitConverterInterface
     {
-        return $this
-            ->converterFactory
-            ->makeConverter($fromUnit, $toUnit)
-            ->convert($value);
+        return (new UnitConverterFactory())->makeConverter($fromUnit, $toUnit);
     }
 
 }
