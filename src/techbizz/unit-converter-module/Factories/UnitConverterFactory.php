@@ -18,8 +18,7 @@ class UnitConverterFactory
 
     private function mapConverters(): void
     {
-        $converterFilesLs = scandir(self::CONVERTERS_DIRECTORY);
-        $converterFiles = array_slice($converterFilesLs, 2);
+        $converterFiles = array_diff(scandir(self::CONVERTERS_DIRECTORY),['.','..']);
         $this->converterMap = array_map(
             function ($filename) {
                 $converterNameSpace = self::CONVERTER_NAMESPACE;
